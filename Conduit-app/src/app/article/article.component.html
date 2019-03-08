@@ -1,0 +1,165 @@
+<div class="article-page">
+  <div class="banner">
+    <div class="container">
+      <h1>{{ dataService.detailArticle?.article.title }}</h1>
+
+      <div class="article-meta">
+        <a
+          routerLink="/home/{{
+            dataService.detailArticle?.article.author.username
+          }}"
+          routerLinkActive="router-link-active"
+          ><img src="{{ dataService.detailArticle?.article.author.image }}"
+        /></a>
+        <div class="info">
+          <a href="" class="author">{{
+            dataService.detailArticle?.article.author.username
+          }}</a>
+          <span class="date">{{
+            dataService.detailArticle?.article.createdAt | date
+          }}</span>
+        </div>
+        <button class="btn btn-sm btn-outline-secondary">
+          <i class="ion-plus-round"></i>
+          &nbsp; Follow {{ dataService.detailArticle?.article.author.username }}
+        </button>
+        &nbsp;&nbsp;
+        <button class="btn btn-sm btn-outline-primary">
+          <i class="ion-heart"></i>
+          &nbsp; Favorite Post
+          <span class="counter"
+            >({{ dataService.detailArticle?.article.favoritesCount }})</span
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row article-content">
+      <div class="col-md-12">
+        <p>
+          {{ dataService.detailArticle?.article.description }}
+        </p>
+        <h2 id="introducing-ionic">
+          {{ dataService.detailArticle?.article.body }}
+        </h2>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="article-actions">
+      <div class="article-meta">
+        <a
+          routerLink="/home/{{
+            dataService.detailArticle?.article.author.username
+          }}"
+          routerLinkActive="router-link-active"
+        >
+          <img src="{{ dataService.detailArticle?.article.author.image }}" />
+        </a>
+        <div class="info">
+          <a href="" class="author">{{
+            dataService.detailArticle?.article.author.username
+          }}</a>
+          <span class="date">{{
+            dataService.detailArticle?.article.createdAt | date
+          }}</span>
+        </div>
+
+        <button class="btn btn-sm btn-outline-secondary">
+          <i class="ion-plus-round"></i>
+          &nbsp; Follow {{ dataService.detailArticle?.article.author.username }}
+        </button>
+        &nbsp;
+        <button class="btn btn-sm btn-outline-primary">
+          <i class="ion-heart"></i>
+          &nbsp; Favorite Post
+          <span class="counter"
+            >({{ dataService.detailArticle?.article.favoritesCount }})</span
+          >
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 offset-md-2">
+        <div>
+          <a routerLink="/signin"
+          routerLinkActive="router-link-active">Sign in </a> or 
+          <a routerLink="/signup"
+          routerLinkActive="router-link-active">sign up </a> 
+          to add comments on this article.
+        </div>
+        <!-- <form class="card comment-form">
+          <div class="card-block">
+            <textarea
+              class="form-control"
+              placeholder="Write a comment..."
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="card-footer">
+            <img
+              src="http://i.imgur.com/Qr71crq.jpg"
+              class="comment-author-img"
+            />
+            <button class="btn btn-sm btn-primary">
+              Post Comment
+            </button>
+          </div>
+        </form> -->
+
+        <div class="card" *ngFor="let c of dataService.comments?.comments">
+          <div class="card-block">
+            <p class="card-text">
+              {{ c.body }}
+            </p>
+          </div>
+          <div class="card-footer">
+            <a
+              routerLink="/home/{{ c?.author.username }}"
+              routerLinkActive="router-link-active"
+              class="comment-author"
+            >
+              <img src="{{ c?.author.image }}" class="comment-author-img" />
+            </a>
+            &nbsp;
+            <a
+              routerLink="/home/{{ c?.author.username }}"
+              routerLinkActive="router-link-active"
+              class="comment-author"
+              >{{ c?.author.username }}</a
+            >
+            <span class="date-posted">{{ c?.createdAt | date }}</span>
+          </div>
+        </div>
+
+        <!-- <div class="card">
+          <div class="card-block">
+            <p class="card-text">
+              With supporting text below as a natural lead-in to additional
+              content.
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="" class="comment-author">
+              <img
+                src="http://i.imgur.com/Qr71crq.jpg"
+                class="comment-author-img"
+              />
+            </a>
+            &nbsp;
+            <a href="" class="comment-author">Jacob Schmidt</a>
+            <span class="date-posted">Dec 29th</span>
+            <span class="mod-options">
+              <i class="ion-edit"></i>
+              <i class="ion-trash-a"></i>
+            </span>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>

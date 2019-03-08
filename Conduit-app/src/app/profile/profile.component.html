@@ -1,24 +1,32 @@
-<div class="home-page">
-  <div class="banner">
+<div class="profile-page">
+  <div class="user-info">
     <div class="container">
-      <h1 class="logo-font">conduit</h1>
-      <p>A place to share your knowledge.</p>
+      <div class="row">
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <img src="{{dataService.profile?.profile.image}}" class="user-img" />
+          <h4>{{dataService.profile?.profile.username}}</h4>
+          <p>
+            {{dataService.profile?.profile.bio}}
+          </p>
+          <button class="btn btn-sm btn-outline-secondary action-btn">
+            <i class="ion-plus-round"></i>
+            &nbsp; Follow {{dataService.profile?.profile.username}}
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="container page">
+  <div class="container">
     <div class="row">
-      <div class="col-md-9">
-        <div class="feed-toggle">
+      <div class="col-xs-12 col-md-10 offset-md-1">
+        <div class="articles-toggle">
           <ul class="nav nav-pills outline-active">
             <li class="nav-item">
-              <a class="nav-link disabled" href="">Your Feed</a>
+              <a class="nav-link active" href="">My Articles</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">Global Feed</a>
-            </li>
-            <li class="nav-item" *ngIf="tag">
-              <a class="nav-link active" href>#{{tag}}</a>
+              <a class="nav-link" href="">Favorited Articles</a>
             </li>
           </ul>
         </div>
@@ -43,17 +51,6 @@
           </a>
         </div>
       </div>
-
-      <div class="col-md-3">
-        <div class="sidebar">
-          <p>Popular Tags</p>
-
-          <div class="tag-list">
-            <a class="tag-pill tag-default" *ngFor="let t of dataService.tags" (click)="changeTag(t)">{{t}}</a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-
