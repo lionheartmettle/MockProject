@@ -19,14 +19,14 @@
             dataService.detailArticle?.article.createdAt | date
           }}</span>
         </div>
-        <button class="btn btn-sm btn-outline-secondary">
+        <button class="btn btn-sm btn-outline-secondary" routerLink="/signin" routerLinkActive="router-link-active">
           <i class="ion-plus-round"></i>
           &nbsp; Follow {{ dataService.detailArticle?.article.author.username }}
         </button>
         &nbsp;&nbsp;
-        <button class="btn btn-sm btn-outline-primary">
+        <button class="btn btn-sm btn-outline-primary" routerLink="/signin" routerLinkActive="router-link-active">
           <i class="ion-heart"></i>
-          &nbsp; Favorite Post
+          &nbsp; Favorite Article
           <span class="counter"
             >({{ dataService.detailArticle?.article.favoritesCount }})</span
           >
@@ -68,14 +68,16 @@
           }}</span>
         </div>
 
-        <button class="btn btn-sm btn-outline-secondary">
+        <button class="btn btn-sm btn-outline-secondary" 
+        routerLink="/signin" routerLinkActive="router-link-active">
           <i class="ion-plus-round"></i>
           &nbsp; Follow {{ dataService.detailArticle?.article.author.username }}
         </button>
         &nbsp;
-        <button class="btn btn-sm btn-outline-primary">
+        <button class="btn btn-sm btn-outline-primary" 
+        routerLink="/signin" routerLinkActive="router-link-active">
           <i class="ion-heart"></i>
-          &nbsp; Favorite Post
+          &nbsp; Favorite Article
           <span class="counter"
             >({{ dataService.detailArticle?.article.favoritesCount }})</span
           >
@@ -92,6 +94,7 @@
           routerLinkActive="router-link-active">sign up </a> 
           to add comments on this article.
         </div>
+        <br>
         <!-- <form class="card comment-form">
           <div class="card-block">
             <textarea
