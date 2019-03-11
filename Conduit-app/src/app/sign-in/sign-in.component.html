@@ -7,15 +7,32 @@
           <a href="">Need an account?</a>
         </p>
 
-        <ul class="error-messages">
-          <li>email or password is invalid</li>
-        </ul>
-
-        <form>
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+          <ul
+            class="error-messages"
+            [hidden]="
+              email.valid ||
+              email.untouched ||
+              password.valid ||
+              password.untouched
+            "
+          >
+            <li [hidden]="!email.hasError('email')">Wrong email format.</li>
+            <li [hidden]="!email.hasError('required')">Email is empty.</li>
+            <li [hidden]="!password.hasError('required')">
+              Password is empty.
+            </li>
+            <li [hidden]="!password.hasError('minlength')">
+              Password can not be shorter than 6 characters.
+            </li>
+          </ul>
           <fieldset class="form-group">
             <input
               class="form-control form-control-lg"
-              type="text"
+              type="email"
+              name="email"
+              required
+              formControlName="email"
               placeholder="Email"
             />
           </fieldset>
@@ -23,10 +40,17 @@
             <input
               class="form-control form-control-lg"
               type="password"
+              name="password"
+              formControlName="password"
               placeholder="Password"
+              required
             />
           </fieldset>
-          <button class="btn btn-lg btn-primary pull-xs-right" type="submit" >
+          <button
+            class="btn btn-lg btn-primary pull-xs-right"
+            type="submit"
+            [disabled]="!signInForm.valid"
+          >
             Sign In
           </button>
         </form>
